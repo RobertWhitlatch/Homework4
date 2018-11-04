@@ -7,7 +7,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String API_Key = "AIzaSyCb3RKIFfRkmKrzazQOcFgzcnvKsX9Qc44";
+    public static String API_Key = "API_Key";
     public static AddressEntry address = new AddressEntry(API_Key);
 
     @Override
