@@ -29,8 +29,8 @@ public class AddressEntry {
         zipCode = "";
         country = "";
         url = "https://maps.googleapis.com/maps/api/geocode/json?address=";
-        jsonStr = null;
         acquired = false;
+        jsonStr = null;
         formatted_address = "";
         place_id = "";
         lat = 0.0;
@@ -118,26 +118,6 @@ public class AddressEntry {
         this.jsonStr = jsonStr;
     }
 
-//    public void parseResponse(String jsonStr) {
-//        try {
-//            Log.d("debug", jsonStr);
-//            JSONArray raw = new JSONArray(jsonStr);
-//            this.setRawResponse(raw.getJSONObject(0));
-//
-//            if(!raw.getJSONObject(1).getString("status").equals("OK")) {
-//                acquired = false;
-//                this.setRawResponse(null);
-//                return;
-//            }
-//            formatted_address = rawResponse.getString("formatted_address");
-//            place_id = rawResponse.getString("place_id");
-//            lat = rawResponse.getJSONObject("geometry").getJSONObject("location").getDouble("lat");
-//            lng = rawResponse.getJSONObject("geometry").getJSONObject("location").getDouble("lng");
-//        } catch (final JSONException e) {
-//            Log.e(TAG, "Json parsing error: " + e.getMessage());
-//        }
-//    }
-
     public void parseResponse(String jsonStr){
         if(jsonStr == null){
             return;
@@ -155,11 +135,27 @@ public class AddressEntry {
                 if(tokens[++i].equals("lng")) {
                     lng = Double.parseDouble(tokens[++i]);
                 }
-            } else if (tokens[i].equals("place_id")){
-                place_id = tokens[++i];
+            }
+        }
+        String formattedAddr;
+        formattedAddr = jsonStr.replace("{"," ");
+        formattedAddr = formattedAddr.replace("}"," ");
+        formattedAddr = formattedAddr.replace("["," ");
+        formattedAddr = formattedAddr.replace("]"," ");
+        formattedAddr = formattedAddr.replace(":"," ");
+        formattedAddr = formattedAddr.replace("+"," ");
+        formattedAddr = formattedAddr.replace("\n"," ");
+        formattedAddr = formattedAddr.replace("\t"," ");
+        formattedAddr = formattedAddr.replace("\r"," ");
+        String[] goodBits = formattedAddr.split("\"");
+        int addrIndex;
+        for(int i = 0; i < goodBits.length; i++){
+            if(goodBits[i].equals("formatted_address")){
+                this.formatted_address = goodBits[i+2];
                 break;
             }
         }
+
     }
 
     public String getFormatted_address() {

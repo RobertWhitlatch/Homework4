@@ -45,7 +45,6 @@ public class EnterAddress extends AppCompatActivity {
 
         FetchGeocoding geocode = new FetchGeocoding();
         geocode.execute(address.getURL());
-        //geocode.execute("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyCb3RKIFfRkmKrzazQOcFgzcnvKsX9Qc44");
 
         Intent intent = new Intent(this, DisplayMap.class);
         startActivity(intent);

@@ -3,6 +3,8 @@ package ee461l.homework4;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -55,4 +57,5 @@ public class DisplayMap extends FragmentActivity implements OnMapReadyCallback {
             mMap.moveCamera(CameraUpdateFactory.zoomTo(++zoom));
         }
     }
+
 }

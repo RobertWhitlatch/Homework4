@@ -7,7 +7,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String API_Key = "";
+    public static String API_Key = "AIzaSyCb3RKIFfRkmKrzazQOcFgzcnvKsX9Qc44";
     public static AddressEntry address = new AddressEntry(API_Key);
 
     @Override
@@ -21,10 +21,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, EnterAddress.class);
         startActivity(intent);
     }
-
-//    public void gotoAdditionalFeatures(View view) {
-//        Intent intent = new Intent(this, AdditionalFeatures.class);
-//        startActivity(intent);
-//    }
 
 }
